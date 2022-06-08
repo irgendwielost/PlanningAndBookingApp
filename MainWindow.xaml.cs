@@ -27,9 +27,20 @@ namespace Buchungs_und_Planungssystem
         {
             InitializeComponent();
             LocationId = location;
+            CheckIfCentral();
+            ContentControl.Content = home;
         }
 
         int LocationId = 0;
+        public void CheckIfCentral()
+        {
+            Location loca = Location.GetLocationById(LocationId);
+            if (loca.Designation == "Zentrale")
+            {
+                MessageBox.Show("Zentralen Account");
+            }
+        }
+        
         //Contentcontrol
         BaseDataTab basedata = new BaseDataTab();
         Statistics statistics = new Statistics();

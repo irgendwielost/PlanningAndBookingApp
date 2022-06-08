@@ -6,23 +6,23 @@
         xmlns:local="clr-namespace:Buchungs_und_Planungssystem"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="MainWindow" Height="600" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
 
-      <TabControl Grid.Row="0" x:Name="tab">
-        <TabItem Content="Home"/>
-        <TabItem Content="Statistik"/>
-        <TabItem Content="Zimmer buchen"/>
-        <TabItem Content="Stammdaten"/>
-      </TabControl>
-      
-        <Grid Grid.Row="1">
+        <TabControl Grid.Row="0" x:Name="tab" Margin="0,-1,0,51">
+            <TabItem Content="Home"/>
+            <TabItem Content="Statistik"/>
+            <TabItem Content="Zimmer buchen"/>
+            <TabItem Content="Stammdaten"/>
+        </TabControl>
+
+        <Grid Grid.Row="0" Margin="-5,-31,5,31">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -30,17 +30,26 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Home" Click="SwitchToHome"/>
-            <Button Grid.Column="1" Content="Statistik" Click="SwitchToStatistics"/>
-            <Button Grid.Column="2" Content="Zimmer buchen" Click="SwitchToBooking"/>
-            <Button Grid.Column="3" Content="Stammdaten" Click="SwitchToBasedata"/>
-
-          
-          
+            <Button Grid.Column="0" Content="Home" 
+                    Click="SwitchToHome" 
+                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
+                    Height="50" Width="245"/>
+            <Button Grid.Column="1" Content="Statistik" 
+                    Click="SwitchToStatistics" 
+                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
+                    Height="50" Width="245" />
+            <Button Grid.Column="2" Content="Zimmer buchen" 
+                    Click="SwitchToBooking" 
+                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
+                    Height="50" Width="245" />
+            <Button Grid.Column="3" Content="Stammdaten" 
+                    Click="SwitchToBasedata" 
+                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
+                    Height="50" Width="245" />
         </Grid>
 
         <ContentControl x:Name="ContentControl" Grid.Row="2">
-            
+
         </ContentControl>
     </Grid>
 </Window>

@@ -21,7 +21,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <StackPanel>
+            <StackPanel Grid.RowSpan="3">
                 <Expander>
                     <Expander.Header>
                         <TextBlock Text="Zimmer"></TextBlock>

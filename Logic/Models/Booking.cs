@@ -45,7 +45,7 @@ namespace Buchungs_und_Planungssystem.Logic.Models
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"table opening error{e}");
+                    Console.WriteLine($"table opening error{e}"); 
                     throw;
                 }
 

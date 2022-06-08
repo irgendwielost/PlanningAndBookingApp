@@ -80,9 +80,9 @@ namespace Buchungs_und_Planungssystem.Logic.Models
                 try
                 {
 
-                    var cmd = new MySqlCommand($"SELECT * FROM SaisonZeitraum WHERE Beginn >= @date", db.connection);
-                    cmd.Parameters.AddWithValue("@date", start.ToString().Replace('.', '/'));
-                    cmd.Parameters.AddWithValue("@date", end.ToString().Replace('.', '/'));
+                    var cmd = new MySqlCommand($"SELECT * FROM SaisonZeitraum WHERE Beginn >= @start", db.connection);
+                    cmd.Parameters.AddWithValue("@start", start.ToString().Replace('.', '/'));
+                    cmd.Parameters.AddWithValue("@end", end.ToString().Replace('.', '/'));
                     var reader = cmd.ExecuteReader();
 
                     if (reader.Read())

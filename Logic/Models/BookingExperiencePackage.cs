@@ -43,7 +43,7 @@ namespace Buchungs_und_Planungssystem.Logic.Models
                 try
                 {
 
-                    var cmd = new MySqlCommand($"SELECT * FROM BuchungErlebnispakete WHERE BuchungId = {id}", db.connection);
+                    var cmd = new MySqlCommand($"SELECT * FROM BuchungErlebnisPakete WHERE BuchungId = {id}", db.connection);
 
                     var reader = cmd.ExecuteReader();
                     List<BookingExperiencePackage> list = new List<BookingExperiencePackage>();

@@ -260,26 +260,55 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <DatePicker x:Name="StartDate"
-                    Grid.Column="0"
-                    Height="30"
-                    Width="240"/>
-            <TextBlock Text="Am besten funktionieren Tage 01.06.2022 - 03.06.2022" Grid.ColumnSpan="3" Margin="111,259,102,-34" FontStyle="Italic" Foreground="#FF787474" FontSize="11"></TextBlock>
-            <Button Click="ToggleEndDate"
-                Content="Mehrere Tage"
-                Grid.Column="2" Margin="5,60,85,148"/>
+            <Grid Grid.Column="0">
+                <!-- Row definitons-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-            <DatePicker x:Name="EndDate"
+
+                <DatePicker x:Name="StartDate"
+                    Grid.Row="1"
+                    Height="30"
+                    Width="220"/>
+
+                <Button Content="Auswerten" Click="Evaluate"
+                        Grid.Row="4"
+                        Height="30"
+                        Grid.ColumnSpan="3" 
+                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+            
+            
+            
+            
+
+            <Grid Grid.Column="2">
+                <!-- Row definitons-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button Click="ToggleEndDate"
+                    Content="Mehrere Tage"
                     Grid.Column="2"
-                    Height="30"
-                    Width="240" 
-                    IsEnabled="False"/>
+                    Grid.Row="0"/>
 
-            <Button Content="Auswerten" Click="Evaluate"
-                Height="62"
-                Grid.ColumnSpan="3" 
-                VerticalAlignment="Top"
-                Margin="155,170,155,0"/>
+                <DatePicker x:Name="EndDate"
+                            Grid.Row="1"
+                    Height="30"
+                    Width="220" 
+                    IsEnabled="False"/>
+            </Grid>
+            
+
+            
         </Grid>
     </Grid>
 </UserControl>

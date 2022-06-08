@@ -57,7 +57,7 @@ namespace Buchungs_und_Planungssystem.Logic.Models
                     cmd.Parameters.AddWithValue("@room", stay.RoomId);
                     cmd.Parameters.AddWithValue("@arrival", stay.Arrival);
                     cmd.Parameters.AddWithValue("@departure", stay.Departure);
-                    cmd.Parameters.AddWithValue("@departure", stay.Deleted);
+                    cmd.Parameters.AddWithValue("@deleted", stay.Deleted);
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception e)
