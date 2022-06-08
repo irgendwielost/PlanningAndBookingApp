@@ -84,6 +84,7 @@
         <Page Include="Frontend\ViewModels\BaseDatas\RoomPrices.xaml" />
         <Page Include="Frontend\ViewModels\BaseDataTab.xaml" />
         <Page Include="Frontend\ViewModels\BookingTab.xaml" />
+        <Page Include="Frontend\ViewModels\CentralControl\HotelStatisticsTab.xaml" />
         <Page Include="Frontend\ViewModels\HomeTab.xaml" />
         <Page Include="Frontend\ViewModels\Statistics.xaml" />
         <Page Include="Frontend\Windows\LogIn.xaml" />
@@ -99,6 +100,9 @@
         <Compile Include="Frontend\ViewModels\BaseDatas\RoomPrices.xaml.cs" />
         <Compile Include="Frontend\ViewModels\BaseDataTab.xaml.cs" />
         <Compile Include="Frontend\ViewModels\BookingTab.xaml.cs" />
+        <Compile Include="Frontend\ViewModels\CentralControl\HotelStatisticsTab.xaml.cs">
+          <DependentUpon>HotelStatisticsTab.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Frontend\ViewModels\HomeTab.xaml.cs" />
         <Compile Include="Frontend\ViewModels\Statistics.xaml.cs" />
         <Compile Include="Frontend\Windows\LogIn.xaml.cs" />
@@ -114,7 +118,10 @@
         <Compile Include="Logic\Models\Guest.cs" />
         <Compile Include="Logic\Models\Location.cs" />
         <Compile Include="Logic\Models\LocationOperatingResult.cs" />
+        <Compile Include="Logic\Models\LocationOps.cs" />
         <Compile Include="Logic\Models\MarketingCosts.cs" />
+        <Compile Include="Logic\Models\Region.cs" />
+        <Compile Include="Logic\Models\RegionLocation.cs" />
         <Compile Include="Logic\Models\Room.cs" />
         <Compile Include="Logic\Models\RoomPrice.cs" />
         <Compile Include="Logic\Models\Season.cs" />

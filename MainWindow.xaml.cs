@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Planning_and_Booking_System.Frontend.ViewModels.CentralControl;
 
 namespace Buchungs_und_Planungssystem
 {
@@ -28,7 +29,7 @@ namespace Buchungs_und_Planungssystem
             InitializeComponent();
             LocationId = location;
             CheckIfCentral();
-            ContentControl.Content = home;
+            
         }
 
         int LocationId = 0;
@@ -38,6 +39,13 @@ namespace Buchungs_und_Planungssystem
             if (loca.Designation == "Zentrale")
             {
                 MessageBox.Show("Zentralen Account");
+                StandartGrid.Visibility = Visibility.Hidden;
+                ContentControl.Content = hotelStatisticsTab;
+            }
+            else
+            {
+                CentralGrid.Visibility = Visibility.Visible;
+                ContentControl.Content = home;
             }
         }
         
@@ -46,6 +54,7 @@ namespace Buchungs_und_Planungssystem
         Statistics statistics = new Statistics();
         BookingTab bookingTab = new BookingTab();
         HomeTab home = new HomeTab(1);
+        private HotelStatisticsTab hotelStatisticsTab = new HotelStatisticsTab();
 
         public void SwitchTab(int index)
         {

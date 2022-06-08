@@ -22,7 +22,8 @@
             <TabItem Content="Stammdaten"/>
         </TabControl>
 
-        <Grid Grid.Row="0" Margin="-5,-31,5,31">
+        <!-- Standart -->
+        <Grid Grid.Row="0" Margin="-5,-31,5,31" x:Name="StandartGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -40,6 +41,29 @@
                     Height="50" Width="245" />
             <Button Grid.Column="2" Content="Zimmer buchen" 
                     Click="SwitchToBooking" 
+                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
+                    Height="50" Width="245" />
+            <Button Grid.Column="3" Content="Stammdaten" 
+                    Click="SwitchToBasedata" 
+                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
+                    Height="50" Width="245" />
+        </Grid>
+        
+        <!-- Central -->
+        <Grid Grid.Row="0" Margin="-5,-31,5,31" x:Name="CentralGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="Hotels" 
+                    Click="SwitchToHome" 
+                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
+                    Height="50" Width="245"/>
+            <Button Grid.Column="1" Content="Statistik" 
+                    Click="SwitchToStatistics" 
                     Style="{StaticResource MaterialDesignFlatDarkButton}" 
                     Height="50" Width="245" />
             <Button Grid.Column="3" Content="Stammdaten" 
