@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="Buchungs_und_Planungssystem.Frontend.ViewModels.BookingTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Buchungs_und_Planungssystem.Frontend.ViewModels"
+             mc:Ignorable="d" 
+             Background="white"
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        
+        <!-- Guest -->
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="Gast"/>
+            <ComboBox x:Name="GuestCombo" 
+                      DisplayMemberPath="GastName"
+                      SelectedValuePath="Id"
+                      IsEditable="True"/>
+        </StackPanel>
+
+        <!-- Room -->
+        <StackPanel Grid.Row="0" Grid.Column="0" 
+                    VerticalAlignment="Bottom">
+            <Label Content="Zimmer"/>
+            <ComboBox x:Name="RoomCombo"
+                      DisplayMemberPath="Bezeichnung"
+                      SelectedValuePath="Id"
+                      IsEditable="True"/>
+        </StackPanel>
+
+        <!-- ExperiencePackage -->
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <CheckBox x:Name="ExpPackCheck" IsChecked="False">Erlebnispakete</CheckBox>
+            <ComboBox IsEnabled="{Binding ElementName=ExpPackCheck, Path=IsChecked}" x:Name="ExpPackageCombo"
+                      DisplayMemberPath="Bezeichnung"
+                      SelectedValuePath="Id"
+                      IsEditable="True"/>
+        </StackPanel>
+
+
+        <!-- Arrival and departure  -->
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Orientation="Horizontal">
+            
+            <StackPanel>
+                <Label Content="Anfahrt"/>
+                <DatePicker x:Name="ArrivalDate" Text="Anfahrt"/>
+            </StackPanel>
+            
+            <StackPanel HorizontalAlignment="Right">
+                <Label Content="Abfahrt"/>
+                <DatePicker x:Name="DepartureDate"/>
+            </StackPanel>
+            
+        </StackPanel>
+
+        <!-- New guest-->
+        <Button Content="Neu.."
+                Grid.Row="0"
+                Grid.Column="2"
+                Width="50"
+                Height="22" Margin="0,26,270,77"/>
+
+        <!-- Room -->
+        <StackPanel Grid.Row="0" Grid.Column="2" 
+                    VerticalAlignment="Bottom">
+            <Label Content="Mitreisende"/>
+            <TextBox x:Name="FellowTravellers"
+                     HorizontalAlignment="Left"
+                     Height="22"
+                     Width="100"/>
+        </StackPanel>
+
+        <Button x:Name="BookRoomButton" Content="Buchen" Click="BookRoom"
+                Width="100"
+                Height="40"
+                Grid.Row="1"
+                Grid.Column="2"/>
+    </Grid>
+</UserControl>
