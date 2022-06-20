@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Buchungs_und_Planungssystem.Frontend.ViewModels"
              mc:Ignorable="d" 
              Background="white"
-             d:DesignHeight="500" d:DesignWidth="1000">
+             d:DesignHeight="542" d:DesignWidth="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -14,7 +14,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
             <RowDefinition Height="*"/>
@@ -26,7 +26,7 @@
 
         <TextBlock Text="Planung der Tage" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24"/>
 
-        <DataGrid x:Name="BookingsDataGrid" SelectionChanged="BookingsDataGrid_SelectionChanged" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="2">
+        <DataGrid x:Name="BookingsDataGrid" SelectionChanged="BookingsDataGrid_SelectionChanged" AutoGenerateColumns="False" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="4">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Geplant" Binding="{Binding geplant}"/>
@@ -35,7 +35,7 @@
                 <DataGridTextColumn Header="Datum" Binding="{Binding Datum}"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <StackPanel Grid.Row="4" Grid.Column="1">
             <Label Content="Datum" FontWeight="Bold"/>
             <DatePicker x:Name="DatePick" SelectedDateChanged="Date_SelectedDateChanged"/>

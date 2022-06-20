@@ -36,7 +36,7 @@ namespace Buchungs_und_Planungssystem.Frontend.Windows
             Staff user = Staff.StaffLogIn(Username, Password);
             if(user != null)
             {
-                MainWindow main = new MainWindow(user.LocationId);
+                MainWindow main = new MainWindow(user.LocationId, Username);
                 main.Show();
                 this.Close();
             }
@@ -44,6 +44,11 @@ namespace Buchungs_und_Planungssystem.Frontend.Windows
             {
                 MessageBox.Show("Bitte Benutzername und Password überprüfen");
             }
+        }
+
+        private void CloseApp(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

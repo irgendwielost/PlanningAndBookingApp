@@ -38,7 +38,7 @@ namespace Buchungs_und_Planungssystem.Logic.Models
 
                 try
                 {
-                    var cmd = new MySqlDataAdapter("SELECT StandortBetrieb.*, l.Bezeichnung as LocationName " +
+                    var cmd = new MySqlDataAdapter($"SELECT StandortBetrieb.*, l.Bezeichnung as LocationName " +
                                                    "FROM StandortBetrieb join Hotelstandorte l on StandortBetrieb.StandortId = l.ID", db.connection);
                     DataSet dataset = new DataSet();
                     cmd.Fill(dataset, "StandortBetrieb");
@@ -69,7 +69,9 @@ namespace Buchungs_und_Planungssystem.Logic.Models
 
                 try
                 {
-                    var cmd = new MySqlDataAdapter($"SELECT * FROM StandortBetrieb WHERE StandortId = {id}", 
+                    var cmd = new MySqlDataAdapter($"SELECT StandortBetrieb.*, l.Bezeichnung as LocationName " +
+                                                   $"FROM StandortBetrieb join Hotelstandorte l on StandortBetrieb.StandortId " +
+                                                   $"= l.ID WHERE StandortId = {id}", 
                         db.connection);
                     DataSet dataset = new DataSet();
                     cmd.Fill(dataset, "StandortBetrieb");

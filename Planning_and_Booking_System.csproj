@@ -37,6 +37,9 @@
         <Reference Include="MaterialDesignColors, Version=2.0.7.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
           <HintPath>packages\MaterialDesignColors.2.0.7-ci198\lib\net462\MaterialDesignColors.dll</HintPath>
         </Reference>
+        <Reference Include="MaterialDesignExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c5ebccebe084d64f, processorArchitecture=MSIL">
+          <HintPath>packages\MaterialDesignExtensions.4.0.0-a02\lib\net452\MaterialDesignExtensions.dll</HintPath>
+        </Reference>
         <Reference Include="MaterialDesignThemes.Wpf, Version=4.6.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
           <HintPath>packages\MaterialDesignThemes.4.6.0-ci198\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
         </Reference>
@@ -67,6 +70,7 @@
           <HintPath>packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
         </Reference>
         <Reference Include="System.Transactions" />
+        <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
         <Reference Include="System.Xaml">
             <RequiredTargetFramework>4.0</RequiredTargetFramework>

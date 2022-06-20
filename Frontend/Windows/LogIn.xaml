@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:Buchungs_und_Planungssystem.Frontend.Windows"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="white"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
         Title="LogIn" Height="500" Width="400">
     <Grid>
         <Grid.RowDefinitions>
@@ -30,6 +38,12 @@
                      materialDesign:HintAssist.Hint="Passwort"/>
         </StackPanel>
 
-        <Button Grid.Row="3" Content="Anmelden" Width="200" Height="30" Click="LogUserIn"/>
+        <Button Grid.Row="3" Content="Anmelden" Width="200" Height="30" Click="LogUserIn" Foreground="white"/>
+        <Button Grid.Row="3"
+            Style="{StaticResource MaterialDesignFlatButton}"
+            Click="CloseApp"
+            ToolTip="MaterialDesignFlatButton"
+            Content="schließen"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="115,79,117,12" />
     </Grid>
 </Window>

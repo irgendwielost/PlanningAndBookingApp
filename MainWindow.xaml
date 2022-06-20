@@ -5,75 +5,142 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Buchungs_und_Planungssystem"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+        xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="white"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
         Title="MainWindow" Height="600" Width="1000">
+
+
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="Menu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="Menu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuOpen">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuClose">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <TabControl Grid.Row="0" x:Name="tab" Margin="0,-1,0,51">
-            <TabItem Content="Home"/>
-            <TabItem Content="Statistik"/>
-            <TabItem Content="Zimmer buchen"/>
-            <TabItem Content="Stammdaten"/>
-        </TabControl>
+        <!-- App-Bar -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Background="#2f9cfa" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PopupBox Grid.Column="2" VerticalAlignment="Center">
+                    <StackPanel>
+                        <Button Content="Schließen"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                <TextBlock 
+                    x:Name="TabName"
+                    Text="" 
+                    FontSize="30"
+                    Foreground="white" 
+                    VerticalAlignment="Center" 
+                    Grid.Column="0" 
+                    HorizontalAlignment="Center" Margin="417.09,9,222,-5"/>
+                <TextBlock 
+                    x:Name="Username"
+                    Text="Fabian Conrad" 
+                    Foreground="white" 
+                    VerticalAlignment="Center" 
+                    Margin="88,15,29.346,9.4" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center"/>
+            </Grid>
+        </StackPanel>
 
-        <!-- Standart -->
-        <Grid Grid.Row="0" Margin="-5,-31,5,31" x:Name="StandartGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" x:Name="Menu" Width="50" HorizontalAlignment="Left">
+            <StackPanel>
+                <Grid Height="50" Background="white">
+                    <!-- Close Button -->
+                    <Button x:Name="ButtonMenuClose" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonCloseMenu_OnClick" Width="52.8" Height="50"  >
+                        <materialDesign:PackIcon Kind="ArrowLeft" Foreground="white"/>
+                    </Button>
+                    <!-- Open Button -->
+                    <Button x:Name="ButtonMenuOpen" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonOpenMenu_OnClick" Height="50" Margin="0,0,-2.8,0" Width="52.8" Visibility="Visible">
+                        <materialDesign:PackIcon Kind="Menu" Foreground="white"/>
+                    </Button>
+                </Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ListView" SelectionChanged="ListView_OnSelectionChanged">
+                    <!-- Item | Home -->
+                    <ListViewItem Height="60" Background="#176ec6">
+                        <StackPanel Orientation="Horizontal" Height="50" Width="195">
+                            <materialDesign:PackIcon Kind="Home" Width="25" Height="25" Foreground="white" VerticalAlignment="Center" Margin="0,12.5"/>
+                            <TextBlock Text="Home" Foreground="white" Margin="0,17.2" HorizontalAlignment="Right" Width="52" TextAlignment="Right"/>
+                        </StackPanel>
+                    </ListViewItem>
 
-            <Button Grid.Column="0" Content="Home" 
-                    Click="SwitchToHome" 
-                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
-                    Height="50" Width="245"/>
-            <Button Grid.Column="1" Content="Statistik" 
-                    Click="SwitchToStatistics" 
-                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
-                    Height="50" Width="245" />
-            <Button Grid.Column="2" Content="Zimmer buchen" 
-                    Click="SwitchToBooking" 
-                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
-                    Height="50" Width="245" />
-            <Button Grid.Column="3" Content="Stammdaten" 
-                    Click="SwitchToBasedata" 
-                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
-                    Height="50" Width="245" />
+                    <!-- Item | Statistics -->
+                    <ListViewItem Height="60" Background="#176ec6">
+                        <StackPanel Orientation="Horizontal" Height="50" Width="195">
+                            <materialDesign:PackIcon Kind="Graph" Width="25" Height="25" Foreground="white" VerticalAlignment="Center"/>
+                            <TextBlock Text="Statistik" Foreground="white" Margin="0,17.2" HorizontalAlignment="Right" Width="62" TextAlignment="Right"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <!-- Item | Room -->
+                    <ListViewItem Height="60" Background="#176ec6" x:Name="BookRoomItem">
+                        <StackPanel Orientation="Horizontal" Height="50" Width="195">
+                            <materialDesign:PackIcon Kind="BookAdd" Width="25" Height="25" Foreground="white" VerticalAlignment="Center"/>
+                            <TextBlock Text="Räume" Foreground="white" Margin="0,17.2" HorizontalAlignment="Right" Width="57" TextAlignment="Right"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <!-- Item | basedata -->
+                    <ListViewItem Height="60" Background="#176ec6">
+                        <StackPanel Orientation="Horizontal" Height="50" Width="195">
+                            <materialDesign:PackIcon Kind="Database" Width="25" Height="25" Foreground="white" VerticalAlignment="Center"/>
+                            <TextBlock Text="Stammdaten" Foreground="white" Margin="0,17.2" HorizontalAlignment="Right" Width="92" TextAlignment="Right"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                </ListView>
+            </StackPanel>
         </Grid>
+
+        <ContentControl Grid.Column="0" Grid.Row="1" 
+                        x:Name="ContentControl"
+                        Width="800" 
+                        Grid.ColumnSpan="2" 
+                        HorizontalAlignment="Right"/>
         
-        <!-- Central -->
-        <Grid Grid.Row="0" Margin="-5,-31,5,31" x:Name="CentralGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="0" Content="Hotels" 
-                    Click="SwitchToHome" 
-                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
-                    Height="50" Width="245"/>
-            <Button Grid.Column="1" Content="Statistik" 
-                    Click="SwitchToStatistics" 
-                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
-                    Height="50" Width="245" />
-            <Button Grid.Column="3" Content="Stammdaten" 
-                    Click="SwitchToBasedata" 
-                    Style="{StaticResource MaterialDesignFlatDarkButton}" 
-                    Height="50" Width="245" />
-        </Grid>
-
-        <ContentControl x:Name="ContentControl" Grid.Row="2">
-
-        </ContentControl>
+  
     </Grid>
 </Window>

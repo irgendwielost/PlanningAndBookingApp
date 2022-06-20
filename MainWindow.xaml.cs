@@ -24,14 +24,15 @@ namespace Buchungs_und_Planungssystem
     public partial class MainWindow : Window
     {
         
-        public MainWindow(int location)
+        public MainWindow(int location, string username)
         {
             InitializeComponent();
             LocationId = location;
+            Username.Text = username;
             CheckIfCentral();
-            
         }
 
+        private bool isCentral = false;
         int LocationId = 0;
         public void CheckIfCentral()
         {
@@ -39,13 +40,8 @@ namespace Buchungs_und_Planungssystem
             if (loca.Designation == "Zentrale")
             {
                 MessageBox.Show("Zentralen Account");
-                StandartGrid.Visibility = Visibility.Hidden;
-                ContentControl.Content = hotelStatisticsTab;
-            }
-            else
-            {
-                CentralGrid.Visibility = Visibility.Visible;
-                ContentControl.Content = home;
+                isCentral = true;
+                BookRoomItem.Visibility = Visibility.Collapsed;
             }
         }
         
@@ -54,37 +50,74 @@ namespace Buchungs_und_Planungssystem
         Statistics statistics = new Statistics();
         BookingTab bookingTab = new BookingTab();
         HomeTab home = new HomeTab(1);
-        private HotelStatisticsTab hotelStatisticsTab = new HotelStatisticsTab();
-
-        public void SwitchTab(int index)
+        //Central
+        HotelStatisticsTab hotelStatisticsTab = new HotelStatisticsTab();
+       
+        private void SwitchToHotelStatistics()
         {
-            tab.SelectedIndex = index;
+            if (isCentral)
+            {
+                ContentControl.Content = hotelStatisticsTab;
+                TabName.Text = "Statistik";
+            }
+            else
+            {
+                ContentControl.Content = statistics;
+            }
         }
-
-        private void SwitchToBasedata(object sender, RoutedEventArgs e)
+        
+        private void SwitchToBasedata()
         {
             ContentControl.Content = basedata;
-            SwitchTab(3);
-
+            TabName.Text = "Stammdaten";
         }
-        private void SwitchToHome(object sender, RoutedEventArgs e)
+        private void SwitchToHome()
         {
             ContentControl.Content = home;
-            SwitchTab(0);
-
+            TabName.Text = "Home";
         }
-        private void SwitchToStatistics(object sender, RoutedEventArgs e)
-        {
-            ContentControl.Content = statistics;
-            SwitchTab(1);
-        }
+       
 
-        private void SwitchToBooking(object sender, RoutedEventArgs e)
+        private void SwitchToBooking()
         {
             ContentControl.Content = bookingTab;
-            SwitchTab(2);
+            TabName.Text = "Zimmer buchen";
         }
 
 
+        private void ButtonCloseMenu_OnClick(object sender, RoutedEventArgs e)
+        {
+            ButtonMenuOpen.Visibility = Visibility.Visible;
+            ButtonMenuClose.Visibility = Visibility.Collapsed;
+        }
+
+        private void ButtonOpenMenu_OnClick(object sender, RoutedEventArgs e)
+        {
+            ButtonMenuClose.Visibility = Visibility.Visible;
+            ButtonMenuOpen.Visibility = Visibility.Collapsed;
+        }
+
+        private void ListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int selectedItem = ListView.SelectedIndex;
+            switch (selectedItem)
+            {
+                case 0:
+                    SwitchToHome();
+                    break;
+                case 1:
+                    SwitchToHotelStatistics();
+                    break;
+                case 2:
+                    SwitchToBooking();
+                    break;
+                case 3:
+                    SwitchToBasedata();
+                    break;
+                default:
+                    ContentControl.Content = null;
+                    break;
+            }
+        }
     }
 }

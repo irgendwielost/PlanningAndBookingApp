@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Buchungs_und_Planungssystem.Frontend.ViewModels"
              mc:Ignorable="d" 
              Background="white"
-             d:DesignHeight="500" d:DesignWidth="1000">
+             d:DesignHeight="542" d:DesignWidth="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

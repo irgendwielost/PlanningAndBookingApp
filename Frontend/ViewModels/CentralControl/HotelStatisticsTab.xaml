@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:Planning_and_Booking_System.Frontend.ViewModels.CentralControl"
              mc:Ignorable="d"
              Background="white"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="542" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -21,11 +21,11 @@
             materialDesign:HintAssist.Hint="Region" 
             Width="200"
             SelectedValuePath="Id" 
-            DisplayMemberPath="Bezeichnung" HorizontalAlignment="Left" Margin="205,0,0,0"/>
+            DisplayMemberPath="Bezeichnung" HorizontalAlignment="Left" Margin="5,5,0,5.04"
+            SelectionChanged="RegionComboBox_OnSelectionChanged"/>
 
-        <DataGrid x:Name="HotelsDatagrid" Grid.Row="1" HorizontalAlignment="Center" Grid.RowSpan="2" AutoGenerateColumns="False">
+        <DataGrid x:Name="HotelsDatagrid" Grid.Row="1" HorizontalAlignment="Center" Grid.RowSpan="2" AutoGenerateColumns="False" Width="800">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Kosten" Binding="{Binding Kosten}"/>
                 <DataGridTextColumn Header="Gewinn" Binding="{Binding Gewinn}"/>
                 <DataGridTextColumn Header="Betriebsergebnis" Binding="{Binding Betriebsergebnis}"/>
@@ -40,23 +40,23 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            
+
             <TextBox Grid.Row="0" x:Name="TotalCosts" 
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      materialDesign:HintAssist.Hint="Kosten" 
-                     HorizontalAlignment="Center"
-                     Width="150"/>
+                     HorizontalAlignment="Left"
+                     Width="150" Margin="25,1,0,9" />
             <TextBox Grid.Row="1" x:Name="TotalWinnings" 
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      materialDesign:HintAssist.Hint="Gewinn" 
-                     HorizontalAlignment="Center"
-                     Width="150"/>
-            <TextBox Grid.Row="2" x:Name="TotalOpsResult" 
+                     HorizontalAlignment="Left"
+                     Width="150" Margin="25,1,0,9" />
+            <TextBox Grid.Row="2" x:Name="TotalOpsResult"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      materialDesign:HintAssist.Hint="Betriebsergebnis" 
-                     HorizontalAlignment="Center"
-                     Width="150"/>
+                     HorizontalAlignment="Left"
+                     Width="150" Margin="25,1,0,9" Grid.RowSpan="2"/>
         </Grid>
-        
+
     </Grid>
 </UserControl>
